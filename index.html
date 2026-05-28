@@ -1,471 +1,572 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS351 系統程式與軟體開發 | 期末成果展現</title>
-    <!-- 引入高質感清晰字體 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS 變數定義 風格 */
-        :root {
-            --primary: #0284c7;       /* 質感天空藍 */
-            --primary-light: #38bdf8; /* 亮天空藍 */
-            --secondary: #4f46e5;     /* 星空靛藍 */
-            --bg-main: #f0f9ff;       /* 超淡藍色背景（極致清爽） */
-            --bg-card: #ffffff;       /* 純白卡片 */
-            --text-main: #0f172a;     /* 深色字體（Slate-900），確保極高清晰度 */
-            --text-muted: #475569;    /* 次要說明字體 */
-            --code-bg: #f8fafc;       /* 程式碼區塊背景 */
-            --border-color: #e0f2fe;  /* 淡藍色邊框線條 */
-            --accent-amber: #f59e0b;  /* 亮點提示色（琥珀金） */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* 基礎全域樣式 */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>ann3319 | CS351 Final Portfolio</title>
 
-        body {
-            font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding-bottom: 60px;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-        a:hover {
-            color: var(--secondary);
-        }
+<style>
 
-        /* 導覽列 */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(2, 132, 199, 0.05);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
+:root{
+    --primary:#2563eb;
+    --primary-light:#60a5fa;
+    --bg:#f6f9ff;
+    --surface:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#dbeafe;
+}
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.5px;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
+body{
+    font-family:'Inter','Noto Sans TC',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
 
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
+a{
+    text-decoration:none;
+}
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+.container{
+    width:min(1120px,92%);
+    margin:auto;
+}
 
-        /* 主要內容容器 */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 100px 20px 20px 20px;
-        }
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    z-index:999;
+}
 
-        /* Hero 主視覺介紹區 */
-        .hero {
-            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
-            padding: 50px 40px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.04);
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.8);
-            position: relative;
-            overflow: hidden;
-        }
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
+.logo{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--primary);
+}
 
-        .badge {
-            display: inline-block;
-            background-color: var(--border-color);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
+.nav-links{
+    display:flex;
+    gap:20px;
+}
 
-        .hero h1 {
-            font-size: 2.5rem;
-            color: var(--text-main);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
+.nav-links a{
+    color:var(--muted);
+    font-size:0.95rem;
+    transition:0.2s;
+}
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 25px;
-        }
+.nav-links a:hover{
+    color:var(--primary);
+}
 
-        /* 按鈕樣式 */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+}
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
+.hero-card{
+    width:100%;
+    background:linear-gradient(135deg,#ffffff 0%,#eff6ff 100%);
+    border-radius:30px;
+    padding:70px;
+    border:1px solid var(--border);
+    box-shadow:0 10px 40px rgba(37,99,235,0.08);
+    position:relative;
+    overflow:hidden;
+}
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
-        }
+.hero-card::before{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(96,165,250,0.15);
+    border-radius:50%;
+    top:-120px;
+    right:-120px;
+}
 
-        .btn-primary:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-            color: white;
-        }
+.badge{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:999px;
+    background:#dbeafe;
+    color:var(--primary);
+    font-size:0.85rem;
+    font-weight:600;
+    margin-bottom:18px;
+}
 
-        .btn-secondary {
-            background-color: white;
-            color: var(--text-main);
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        }
+.hero h1{
+    font-size:4rem;
+    line-height:1.1;
+    margin-bottom:20px;
+}
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
+.hero h1 span{
+    color:var(--primary);
+}
 
-        /* 區塊樣式 */
-        .section-title {
-            font-size: 1.6rem;
-            margin: 40px 0 20px 0;
-            position: relative;
-            padding-left: 15px;
-            color: var(--text-main);
-            font-weight: 700;
-        }
+.hero p{
+    max-width:700px;
+    color:var(--muted);
+    margin-bottom:35px;
+    font-size:1.05rem;
+}
 
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 4px;
-            bottom: 4px;
-            width: 5px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            border-radius: 4px;
-        }
+.btn-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
 
-        /* 專案卡片 Grid 排版 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:14px;
+    font-weight:600;
+    transition:0.25s;
+}
 
-        @media (max-width: 768px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+.btn-primary{
+    background:var(--primary);
+    color:white;
+    box-shadow:0 6px 20px rgba(37,99,235,0.25);
+}
 
-        .card {
-            background-color: var(--bg-card);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.02);
-            border: 1px solid rgba(2, 132, 199, 0.06);
-            transition: all 0.3s ease;
-        }
+.btn-primary:hover{
+    transform:translateY(-3px);
+    background:#1d4ed8;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.06);
-            border-color: var(--primary-light);
-        }
+.btn-secondary{
+    background:white;
+    color:var(--text);
+    border:1px solid #cbd5e1;
+}
 
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
+.btn-secondary:hover{
+    border-color:var(--primary);
+    color:var(--primary);
+}
 
-        .card-meta {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
-        }
+section{
+    padding:90px 0;
+}
 
-        .tag {
-            background-color: #f1f5f9;
-            color: #64748b;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
+.section-title{
+    font-size:2rem;
+    margin-bottom:15px;
+}
 
-        .tag-tech {
-            background-color: #e0e7ff;
-            color: #4338ca;
-        }
+.section-sub{
+    color:var(--muted);
+    margin-bottom:40px;
+}
 
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
 
-        /* 功能亮點清單 */
-        .feature-list {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+.card{
+    background:white;
+    border-radius:24px;
+    padding:32px;
+    border:1px solid var(--border);
+    box-shadow:0 5px 20px rgba(0,0,0,0.03);
+    transition:0.25s;
+}
 
-        .feature-list li {
-            margin-bottom: 6px;
-        }
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(37,99,235,0.08);
+}
 
-        /* 反思與問答區塊樣式 */
-        .qa-box {
-            background-color: #f8fafc;
-            border-left: 4px solid var(--secondary);
-            padding: 15px 20px;
-            margin-top: 15px;
-            border-radius: 0 12px 12px 0;
-        }
+.tag-group{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:16px 0;
+}
 
-        .qa-box strong {
-            color: var(--text-main);
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
+.tag{
+    background:#eff6ff;
+    color:var(--primary);
+    padding:4px 10px;
+    border-radius:8px;
+    font-size:0.8rem;
+    font-weight:600;
+}
 
-        .qa-box p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
+.card p{
+    color:var(--muted);
+    margin-bottom:18px;
+}
 
-        /* 綜合反思內的小區塊 */
-        .reflection-sub-card {
-            background: #f8fafc; 
-            padding: 20px; 
-            border-radius: 12px;
-            border: 1px solid #f1f5f9;
-        }
+.feature-list{
+    margin-left:20px;
+    color:var(--muted);
+}
 
-        /* 頁尾 */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-            background-color: white;
-        }
-    </style>
+.feature-list li{
+    margin-bottom:8px;
+}
+
+.highlight{
+    margin-top:25px;
+    background:#f8fafc;
+    border-left:4px solid var(--primary);
+    padding:18px;
+    border-radius:0 14px 14px 0;
+}
+
+.highlight strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.skill-box{
+    background:white;
+    padding:24px;
+    border-radius:18px;
+    border:1px solid var(--border);
+}
+
+.skill-box h4{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+.skill-box ul{
+    margin-left:18px;
+    color:var(--muted);
+}
+
+footer{
+    margin-top:80px;
+    border-top:1px solid var(--border);
+    text-align:center;
+    padding:40px 20px;
+    color:#94a3b8;
+    background:white;
+}
+
+@media(max-width:768px){
+
+    .hero-card{
+        padding:40px 30px;
+    }
+
+    .hero h1{
+        font-size:2.6rem;
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- 頂部導覽列 -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">ann3319.github.io</div>
-            <ul class="nav-links">
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#course-repo">課程倉儲</a></li>
-                <li><a href="#project0">Project 0</a></li>
-                <li><a href="#projectb">Project B</a></li>
-                <li><a href="#reflection">實作反思</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav>
+    <div class="container nav-inner">
 
-    <!-- 主要網頁內容 -->
-    <div class="container">
+        <div class="logo">ann3319.github.io</div>
 
-        <!-- Hero 自我介紹區塊 -->
-        <section id="about" class="hero">
-            <span class="badge">元智大學 資工系 | YZUCSE CS351</span>
-            <h1>哈囉，我是 ann3319 👋</h1>
-            <p>歡迎來到我的系統程式與軟體開發成果發表專頁。在本學期的 CS351 課程中，我深入學習了 Git 工作流、現代軟體工程設計、以及如何高效且精準地與 AI 協同開發，以下是我這學期的核心實作結晶。</p>
-            
-            <div class="btn-group">
-                <!-- 連結至你的 GitHub Profile 按鈕 -->
-                <a href="https://github.com/ann3319" target="_blank" class="btn btn-primary">
-                    <svg style="width:18px; height:18px; margin-right:8px; fill:currentColor;" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    瀏覽我的 GitHub
-                </a>
-                <a href="#reflection" class="btn btn-secondary">查看心得反思</a>
-            </div>
-        </section>
-
-        <!-- 課程主倉儲介紹 -->
-        <section id="course-repo" class="card" style="margin-bottom: 40px;">
-            <h3>學期主課程倉儲：11402_CS351</h3>
-            <div class="card-meta">
-                <span class="tag">Main Repository</span>
-                <span class="tag tag-tech">Git/GitHub</span>
-            </div>
-            <p>本倉儲完整紀錄了我整學期的軟體開發學習軌跡，包含每週的實驗進度、課堂代碼演練以及各階段的技術反思報告。我們不只是繳交程式碼，更透過嚴謹的 Commit Message 紀錄了每一次架構優化與思維轉變。</p>
-            <div class="btn-group">
-                <a href="https://github.com/ann3319/11402_CS351" target="_blank" class="btn btn-secondary btn-sm">🔗 瀏覽主課程倉儲</a>
-            </div>
-        </section>
-
-        <!-- 雙專案成果展現區塊 -->
-        <h2 class="section-title">學期實作專案成果</h2>
-        
-        <div class="project-grid">
-            
-            <!-- Project 0: Two Sum -->
-            <section id="project0" class="card">
-                <h3>Project 0: Two Sum 演算法實作</h3>
-                <div class="card-meta">
-                    <span class="tag">LeetCode 經典</span>
-                    <span class="tag tag-tech">Python / C++</span>
-                    <span class="tag tag-tech">AI 協同</span>
-                </div>
-                <p>這是我在 CS351 的起手式專案，其核心任務在於建立一個完整的現代化開發與測試流程。除了演算法的正確性外，更聚焦於利用 AI 工具加速重構並撰寫單元測試。</p>
-                
-                <ul class="feature-list">
-                    <li><strong>演算法核心：</strong> 實作了時間複雜度 $O(N)$ 的 Hash Map 優化解法。</li>
-                    <li><strong>邊界條件測試：</strong> 考慮了重複數字、查無解、以及負數等極端 Edge Cases。</li>
-                    <li><strong>自動化驗證：</strong> 撰寫測試腳本，確保任何代碼修改皆不會破壞原有功能。</li>
-                </ul>
-
-                <div class="btn-group" style="margin-top: 25px;">
-                    <a href="https://github.com/ann3319/11402_CS351_PROJECT0" target="_blank" class="btn btn-primary">🔗 專案原始碼</a>
-                </div>
-
-                <div class="qa-box">
-                    <strong>💡 Demo 現場亮點（演算法演進）：</strong>
-                    <p>一開始我們先以最直覺的雙層迴圈暴力法（O(N²)）破題，之後透過 AI 的重構提示，改以單一迴圈搭配雜湊表優化，將時間降至 O(N)，這讓我深刻體會到 human-in-the-loop 程式碼校閱的重要性。</p>
-                </div>
-            </section>
-
-            <!-- Project B: CSV Mini Database -->
-            <section id="projectb" class="card">
-                <h3>Project B: CSV 微型資料庫</h3>
-                <div class="card-meta">
-                    <span class="tag">系統設計</span>
-                    <span class="tag tag-tech">Data Parsing</span>
-                    <span class="tag tag-tech">Error Handling</span>
-                </div>
-                <p>這是一個功能完整的微型資料庫管理系統。程式能夠精準地對 CSV 檔案進行結構化資料的操作，著重於程式的模組化結構與強健的防呆容錯機制。</p>
-                
-                <ul class="feature-list">
-                    <li><strong>核心 CRUD 功能：</strong> 支援完整載入（Load）、高清晰顯示（Display）、欄位條件查詢（Search）、新增（Add）及寫回儲存（Save）。</li>
-                    <li><strong>防呆機制：</strong> 當遇到 CSV 檔案毀損、路徑錯誤或資料格式不符時，系統能拋出清晰的錯誤提示，而非直接崩潰。</li>
-                    <li><strong>資料架構選擇：</strong> 內部使用結構化的高效資料容器，便於隨時擴充欄位。</li>
-                </ul>
-
-                <div class="btn-group" style="margin-top: 25px;">
-                    <a href="https://github.com/ann3319/11402_CS351_ProjectB" target="_blank" class="btn btn-primary">🔗 專案原始碼</a>
-                </div>
-
-                <div class="qa-box">
-                    <strong>💡 Demo 現場亮點（高難度 Bug 克服）：</strong>
-                    <p>在開發初期，我們遇到了包含逗號（,）的資料導致解析錯位的 Bug。我透過主動導引 AI 提供精準的 Regex 規則，成功解決了複雜字串的 Parsing 難題，並加強了資料保存的完整性。</p>
-                </div>
-            </section>
-            
-        </div>
-
-        <!-- 綜合反思與亮點回報 -->
-        <h2 class="section-title" id="reflection">AI 輔助開發自評與未來改進</h2>
-        
-        <div class="card">
-            <p style="margin-bottom: 20px;">
-                在黃老師的這門課程中，我對<strong>「軟體開發」</strong>有了全新的認知。現代開發者不再只是埋頭苦幹的編碼工，而是需要扮演高層次的「系統架構師與審查者」。
-            </p>
-            
-            <div class="project-grid" style="grid-template-columns: repeat(auto-fit, minmax(30%, 1fr)); gap:20px; box-shadow:none; border:none; padding:0;">
-                <div class="reflection-sub-card">
-                    <h4 style="color:var(--primary); margin-bottom:10px;">🤖 Prompting 提問能力</h4>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">我拒絕直接複製貼上題目。我學會給予 AI 明確的 Role（如資深系統架構師）、上下文約束與期望的 Output 格式，以取得最高品質的程式架構建議。</p>
-                </div>
-                <div class="reflection-sub-card">
-                    <h4 style="color:var(--primary); margin-bottom:10px;">🔍 Human Verification 驗證</h4>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">AI 常會產生幻覺或寫出看似合理卻有漏洞的程式碼。我堅持對每一行生成的 Code 進行逐行 Review，並設計邊界測試集手動驗證，主導系統的最終正確性。</p>
-                </div>
-                <div class="reflection-sub-card">
-                    <h4 style="color:var(--primary); margin-bottom:10px;">📈 未來展望與優化</h4>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">如果時間充裕，我想在個人網頁中加入動態 API 串接 GitHub API 顯示即時 Commit 數據，並將 Project B 升級為支援 SQL-like 語法的高階資料庫。</p>
-                </div>
-            </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#reflection">Reflection</a>
         </div>
 
     </div>
+</nav>
 
-    <!-- 頁尾宣告 -->
-    <footer>
-        <p>&copy; 2026 ann3319. Built with & Clean Typography for YZUCSE CS351 Final Demo Day.</p>
-    </footer>
+<section class="hero" id="about">
+
+<div class="container">
+
+<div class="hero-card">
+
+<div class="badge">
+YZU CS351 • AI-Assisted Software Development
+</div>
+
+<h1>
+Hi, I'm <span>ann3319</span>
+</h1>
+
+<p>
+我是元智大學資訊工程學系學生。本學期於 CS351 課程中，
+學習 Git/GitHub 工作流程、AI 協同開發、演算法設計以及系統開發。
+以下展示我本學期的重要專案成果與學習歷程。
+</p>
+
+<div class="btn-group">
+
+<a href="https://github.com/ann3319"
+target="_blank"
+class="btn btn-primary">
+GitHub Profile
+</a>
+
+<a href="#projects"
+class="btn btn-secondary">
+View Projects
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+Projects
+</h2>
+
+<p class="section-sub">
+本學期完成的核心專案與實作成果
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Project 0 — Two Sum</h3>
+
+<div class="tag-group">
+<span class="tag">C++</span>
+<span class="tag">Algorithm</span>
+<span class="tag">Hash Map</span>
+<span class="tag">GitHub</span>
+</div>
+
+<p>
+實作經典 Two Sum 演算法問題，
+並透過 GitHub Actions 與 AI 協助進行重構與測試。
+</p>
+
+<ul class="feature-list">
+<li>使用 Hash Map 優化至 O(n)</li>
+<li>完整測試邊界條件</li>
+<li>練習 Git commit 與 branch workflow</li>
+<li>建立現代化開發流程</li>
+</ul>
+
+<div class="btn-group" style="margin-top:25px;">
+
+<a href="https://github.com/ann3319/11402_CS351_PROJECT0"
+target="_blank"
+class="btn btn-primary">
+GitHub Repo
+</a>
+
+</div>
+
+<div class="highlight">
+<strong>Demo Highlight</strong>
+從暴力解法 O(n²) 重構為 Hash Map 解法，
+透過 AI 協助分析時間複雜度與優化方向。
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Project B — CSV Mini Database</h3>
+
+<div class="tag-group">
+<span class="tag">Python</span>
+<span class="tag">CSV Parsing</span>
+<span class="tag">CLI</span>
+<span class="tag">Data Structure</span>
+</div>
+
+<p>
+以 Python 建立微型 CSV Database，
+支援資料讀取、查詢與條件篩選。
+</p>
+
+<ul class="feature-list">
+<li>支援 CSV 載入與查詢</li>
+<li>實作 SELECT 與 WHERE</li>
+<li>加入錯誤處理機制</li>
+<li>模組化程式架構設計</li>
+</ul>
+
+<div class="btn-group" style="margin-top:25px;">
+
+<a href="https://github.com/ann3319/11402_CS351_ProjectB"
+target="_blank"
+class="btn btn-primary">
+GitHub Repo
+</a>
+
+</div>
+
+<div class="highlight">
+<strong>Demo Highlight</strong>
+成功解決 CSV Parsing 問題，
+包含逗號與欄位格式錯誤造成的資料錯位。
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">
+Skills & Tools
+</h2>
+
+<p class="section-sub">
+本學期學習與使用的技術工具
+</p>
+
+<div class="skills">
+
+<div class="skill-box">
+<h4>Programming</h4>
+<ul>
+<li>C++</li>
+<li>Python</li>
+<li>HTML / CSS</li>
+</ul>
+</div>
+
+<div class="skill-box">
+<h4>GitHub Workflow</h4>
+<ul>
+<li>Git Commit</li>
+<li>Branch & Merge</li>
+<li>Pull Request</li>
+</ul>
+</div>
+
+<div class="skill-box">
+<h4>AI-Assisted Development</h4>
+<ul>
+<li>Prompt Engineering</li>
+<li>AI Debugging</li>
+<li>Code Review</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="reflection">
+
+<div class="container">
+
+<h2 class="section-title">
+Reflection
+</h2>
+
+<p class="section-sub">
+本學期最大的收穫與學習心得
+</p>
+
+<div class="card">
+
+<p>
+這學期最大的收穫，
+是學會如何與 AI 協同開發，而不是單純複製貼上程式碼。
+我開始理解：
+開發者真正重要的能力，
+是問題拆解、需求分析與驗證能力。
+</p>
+
+<p>
+在專案開發過程中，
+我透過 GitHub 管理版本、
+使用 AI 協助除錯與重構，
+並逐步建立完整的軟體工程流程觀念。
+</p>
+
+<p>
+未來希望能繼續強化：
+前端設計、
+資料結構、
+以及更完整的全端開發能力。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 ann3319 • YZU CS351 Final Portfolio
+</p>
+
+</footer>
 
 </body>
 </html>
+```
